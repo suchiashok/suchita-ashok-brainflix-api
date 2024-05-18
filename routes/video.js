@@ -29,11 +29,11 @@ router.get("/:id", (req, res) => {
 
 router.post("/", (req,res) => {
     if(!req.body.title) {
-       return res.send(400).send("There must be a title");
+       return res.status(400).send("There must be a title");
     }
 
     if(req.body.title.length < 3) {
-       return res.send(400.).send("Title must be greater than 3 characters");
+       return res.status(400.).send("Title must be greater than 3 characters");
     }
 
     const newVideo = {
