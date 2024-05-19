@@ -39,7 +39,12 @@ router.post("/", (req,res) => {
     const newVideo = {
         id: uuidv4(),
         title: req.body.title,
-        content: req.body.content,
+        description: req.body.description,
+        channel: "BrainStation",
+        image: "/images/Upload-video-preview.jpg",
+        views: "139",
+        likes: "7328",
+        comments: [],
     }
 
     const videos = getVideos();
