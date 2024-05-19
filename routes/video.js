@@ -27,31 +27,36 @@ router.get("/:id", (req, res) => {
   }
 });
 
-router.post("/", (req,res) => {
-    if(!req.body.title) {
-       return res.status(400).send("There must be a title");
-    }
+router.post("/", (req, res) => {
+  if (!req.body.title) {
+    return res.status(400).send("There must be a title");
+  }
 
-    if(req.body.title.length < 3) {
-       return res.status(400.).send("Title must be greater than 3 characters");
-    }
+  if (req.body.title.length < 3) {
+    return res.status(400).send("Title must be greater than 3 characters");
+  }
 
-    const newVideo = {
-        id: uuidv4(),
-        title: req.body.title,
-        description: req.body.description,
-        channel: "BrainStation",
-        image: "/images/Upload-video-preview.jpg",
-        views: "139",
-        likes: "7328",
-        comments: [],
-    }
+  const newVideo = {
+    id: uuidv4(),
+    title: req.body.title,
+    description: req.body.description,
+    channel: "BrainStation",
+    image: "/images/Upload-video-preview.jpg",
+    views: "139",
+    likes: "7328",
+    comments: [],
+    duration: "11:11",
+    timestamp: 1698383862000,
+  };
 
-    const videos = getVideos();
-    videos.push(newVideo);
+  const videos = getVideos();
+  videos.push(newVideo);
 
-    fs.writeFileSync("./data/video-details.json", JSON.stringify(videos, null, 2));
-    res.status(201).json(newVideo);
-})
+  fs.writeFileSync(
+    "./data/video-details.json",
+    JSON.stringify(videos, null, 2)
+  );
+  res.status(201).json(newVideo);
+});
 
 module.exports = router;
