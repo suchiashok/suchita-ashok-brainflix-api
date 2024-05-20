@@ -46,7 +46,7 @@ router.post("/", (req, res) => {
     likes: "7328",
     comments: [],
     duration: "11:11",
-    timestamp: 1698383862000,
+    timestamp: Date.now(),
   };
 
   const videos = getVideos();
